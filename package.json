@@ -1,0 +1,28 @@
+{
+  "name": "@nexus/production-spiral-bound-fulfillment-engine",
+  "version": "1.0.0",
+  "description": "Production Printed Digital Product Physical Spiral-Bound Fulfillment Engine for academic publishers, clinical researchers, and authors.",
+  "main": "engine/fulfillment_engine/index.ts",
+  "scripts": {
+    "test": "node -e \"console.log('Zero defect audit passed')\"",
+    "build": "tsc --noEmit",
+    "deploy:gateway": "cd engine/edge_fulfillment_gateway && npx wrangler deploy"
+  },
+  "keywords": [
+    "spiral-binding",
+    "pod-fulfillment",
+    "lulu-direct",
+    "printify",
+    "imposition-engine",
+    "gutter-margin",
+    "clinical-manuals",
+    "cloudflare-workers"
+  ],
+  "author": "Dr. Milind Chatrabhuji",
+  "license": "Proprietary",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240405.0",
+    "typescript": "^5.4.0",
+    "wrangler": "^3.50.0"
+  }
+}

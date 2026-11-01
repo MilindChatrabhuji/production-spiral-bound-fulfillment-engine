@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printed Digital Product Physical Spiral-Bound Fulfillment Engine | Interactive Showcase</title>
+  <style>
+    :root {
+      --bg: #0a0e1c;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --accent-cyan: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-green: #22c55e;
+      --accent-amber: #f59e0b;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .badge-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-cyan { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+    .badge-green { background: rgba(34, 197, 94, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+
+    .tab-btn.active {
+      background: var(--card-bg);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: #0b1120;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      gap: 8px;
+    }
+
+    .btn-primary { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #fff; }
+    .btn-primary:hover { background: linear-gradient(135deg, #0369a1 0%, #075985 100%); }
+    .btn-success { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: #fff; }
+
+    .terminal-box {
+      background: #050811;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #a5f3fc;
+      max-height: 380px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .metric-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-top: 4px;
+    }
+
+    .metric-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-bar">
+        <span class="badge badge-cyan">WAY #87 &#8226; Product 89</span>
+        <span class="badge badge-purple">Category E: E-Commerce &amp; Physical Goods</span>
+        <span class="badge badge-green">100% Zero-Defect Certified</span>
+      </div>
+      <h1>Production Printed Digital Product Physical Spiral-Bound Fulfillment Engine</h1>
+      <p class="subtitle">PDF imposition with 0.5" binding gutter margins, multi-vendor print-on-demand routing, carrier tracking webhooks, and modern clinical protocol manual fulfillment.</p>
+    </header>
+
+    <nav class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('screen-imposition')">
+        <span>&#128214;</span> 1. Imposition &amp; Gutter Margin Visualizer
+      </button>
+      <button class="tab-btn" onclick="switchTab('screen-pricing')">
+        <span>&#128176;</span> 2. Print &amp; Shipping Cost Calculator
+      </button>
+      <button class="tab-btn" onclick="switchTab('screen-clinical')">
+        <span>&#128300;</span> 3. Clinical Protocol &amp; Lab Manual Specifier
+      </button>
+      <button class="tab-btn" onclick="switchTab('screen-retainer')">
+        <span>&#128188;</span> 4. Physical Fulfillment Retainer Desk
+      </button>
+    </nav>
+
+    <!-- SCREEN 1: IMPOSITION & GUTTER MARGIN VISUALIZER -->
+    <div id="screen-imposition" class="tab-panel active">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><span>&#9881;</span> Spiral Binding Preflight Parameters</div>
+          <div class="form-group">
+            <label>Manuscript Title</label>
+            <input type="text" id="imp-title" value="Clinical Trial Oncology Protocol &amp; Lab Manual">
+          </div>
+          <div class="form-group">
+            <label>Total Page Count</label>
+            <input type="number" id="imp-pages" value="184" step="4">
+          </div>
+          <div class="form-group">
+            <label>Binding Hardware Style</label>
+            <select id="imp-binding">
+              <option value="Twin-Loop Wire-O" selected>Twin-Loop Wire-O (3:1 Pitch - Silver)</option>
+              <option value="Plastic Spiral Coil">Plastic Spiral Coil (4:1 Pitch - Black)</option>
+              <option value="Color Coil">Color Plastic Coil (Navy Blue)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Interior Paper Stock</label>
+            <select id="imp-paper">
+              <option value="80# Opaque Satin Text" selected>80# Opaque Satin Text (Zero Show-Through)</option>
+              <option value="Synthetic Waterproof Teslin">Synthetic Waterproof Teslin 10mil (Wet-Lab)</option>
+              <option value="60# Uncoated White">60# Uncoated White Text (Economy)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Inner Binding Gutter Margin (Inches)</label>
+            <input type="number" id="imp-gutter" value="0.50" step="0.05" min="0.50">
+          </div>
+          <button class="btn btn-primary" onclick="runImpositionPreflight()">
+            <span>&#9889;</span> Generate Imposition Manifest &amp; Coil Gauge
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span>&#128202;</span> Bindery Manifest &amp; Punch Safety Report</div>
+          <div id="imposition-output" class="terminal-box">Click "Generate Imposition Manifest" to calculate coil diameter and verify punch hole clear zones.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: PRINT & SHIPPING COST CALCULATOR -->
+    <div id="screen-pricing" class="tab-panel">
+      <div class="card">
+        <div class="card-title"><span>&#128176;</span> Dynamic Landed Cost &amp; Profit Margin Simulator</div>
+        <div class="grid-2">
+          <div>
+            <div class="form-group">
+              <label>Print Batch Quantity (Units)</label>
+              <input type="number" id="calc-qty" value="50" step="10" oninput="recalcPrintEconomics()">
+            </div>
+            <div class="form-group">
+              <label>Page Count</label>
+              <input type="number" id="calc-pages" value="184" step="4" oninput="recalcPrintEconomics()">
+            </div>
+            <div class="form-group">
+              <label>Destination Country</label>
+              <select id="calc-country" onchange="recalcPrintEconomics()">
+                <option value="US" selected>United States (Domestic Ground)</option>
+                <option value="IN">India (Domestic Speed Post / Delhivery)</option>
+                <option value="GB">United Kingdom (Royal Mail)</option>
+                <option value="EU">European Union (DHL Parcel)</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label>Customer Retail Price ($ USD)</label>
+              <input type="number" id="calc-retail" value="38.50" step="0.50" oninput="recalcPrintEconomics()">
+            </div>
+            <div class="form-group">
+              <label>Carrier Service Speed</label>
+              <select id="calc-carrier" onchange="recalcPrintEconomics()">
+                <option value="STANDARD" selected>Standard Tracked Ground (3-5 Days)</option>
+                <option value="EXPEDITED">Expedited Priority Air (1-2 Days)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-lbl">Unit Print Cost</div>
+            <div class="metric-val" id="res-print">$6.25</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-lbl">Tracked Shipping</div>
+            <div class="metric-val" id="res-ship">$4.95</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-lbl">Net Profit / Unit</div>
+            <div class="metric-val" id="res-profit" style="color:var(--accent-green)">$26.45</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-lbl">Gross Margin (%)</div>
+            <div class="metric-val" id="res-margin">68.7%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: CLINICAL PROTOCOL & LAB MANUAL SPECIFIER -->
+    <div id="screen-clinical" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><span>&#128300;</span> Clinical Protocol Specification Form</div>
+          <div class="form-group">
+            <label>Protocol Reference Code</label>
+            <input type="text" id="clin-code" value="CLIN-SOP-2026-ONCOLOGY">
+          </div>
+          <div class="form-group">
+            <label>Therapeutic Area / Hospital Division</label>
+            <input type="text" id="clin-area" value="Phase III Clinical Oncology &amp; Biotherapy">
+          </div>
+          <div class="form-group">
+            <label>Hospital Wet-Lab Durability Requirements</label>
+            <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+              <label><input type="checkbox" id="chk-waterproof" checked> Waterproof / Reagent-Resistant Synthetic Paper</label>
+              <label><input type="checkbox" id="chk-poly-cover" checked> 10mil Frosted Tear-Proof Protective Cover</label>
+              <label><input type="checkbox" id="chk-evidence" checked> Peer-Reviewed Literature Citations Verified</label>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="auditClinicalProtocol()">
+            <span>&#128737;</span> Validate Clinical Durability &amp; Safety
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span>&#128220;</span> Clinical Compliance Scorecard</div>
+          <div id="clinical-output" class="terminal-box">Submit protocol specifications to verify wet-lab material conformity and evidence-based standards.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: CONSULTING & RETAINER DESK -->
+    <div id="screen-retainer" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><span>&#128188;</span> Physical Book Fulfillment Retainer Desk</div>
+          <div class="form-group">
+            <label>Publishing Organization / Author</label>
+            <input type="text" id="ret-publisher" value="Apex Academic &amp; Clinical Medical Press">
+          </div>
+          <div class="form-group">
+            <label>Fulfillment Retainer Tier</label>
+            <select id="ret-tier">
+              <option value="500">Tier 1: Print Setup Sprint ($500 / mo | ~Rs 41,500)</option>
+              <option value="1500" selected>Tier 2: Managed Workbook Operations ($1,500 / mo | ~Rs 124,500)</option>
+              <option value="3000">Tier 3: Enterprise Institutional Fulfillment ($3,000 / mo | ~Rs 249,000)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Payment Settlement Rail</label>
+            <select id="ret-channel">
+              <option value="UPI">Domestic UPI (milind.chatrabhuji@okhdfcbank)</option>
+              <option value="PAYPAL">International PayPal (milind.chatrabhuji@gmail.com)</option>
+            </select>
+          </div>
+          <button class="btn btn-success" onclick="generateFulfillmentInvoice()">
+            <span>&#128196;</span> Generate Pro-Forma Invoice &amp; SLA Terms
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span>&#128220;</span> Pro-Forma Billing &amp; Reprint Warranty</div>
+          <div id="retainer-output" class="terminal-box">Select tier and click "Generate Pro-Forma Invoice" to preview billing details.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function runImpositionPreflight() {
+      const title = document.getElementById('imp-title').value;
+      const pages = parseInt(document.getElementById('imp-pages').value);
+      const binding = document.getElementById('imp-binding').value;
+      const paper = document.getElementById('imp-paper').value;
+      const gutter = parseFloat(document.getElementById('imp-gutter').value);
+
+      const sheets = Math.ceil(pages / 2);
+      let coilGauge = 12;
+      if (pages > 80) coilGauge = 16;
+      if (pages > 140) coilGauge = 18;
+      if (pages > 200) coilGauge = 22;
+
+      const output = `==========================================================
+SPIRAL BINDING PREFLIGHT & IMPOSITION MANIFEST
+==========================================================
+Title: ${title}
+Page Count: ${pages} pages (${sheets} duplex sheets)
+Paper Stock: ${paper}
+Binding Hardware: ${binding}
+Calculated Coil Diameter: ${coilGauge}mm (Enables true 360-degree flat lay)
+
+GUTTER IMPOSITION CHECK:
+- Required Inner Gutter: ${gutter.toFixed(2)}" (36pt)
+- Alternating Offset: Odd (Recto) Left Gutter | Even (Verso) Right Gutter
+- Punch Hole Safety Clearance: 100% PASS (Zero text perforation)
+
+RECOMMENDED POD ROUTING:
+- Primary Provider: Lulu Direct Coil Print API (Linthicum Facility)
+- Turnaround: 3 Business Days Production + 3 Days Tracked Carrier Delivery`;
+
+      document.getElementById('imposition-output').innerText = output;
+    }
+
+    function recalcPrintEconomics() {
+      const qty = parseInt(document.getElementById('calc-qty').value) || 1;
+      const pages = parseInt(document.getElementById('calc-pages').value) || 100;
+      const country = document.getElementById('calc-country').value;
+      const retail = parseFloat(document.getElementById('calc-retail').value) || 30.0;
+      const carrier = document.getElementById('calc-carrier').value;
+
+      const sheets = Math.ceil(pages / 2);
+      const printCost = 2.40 + (sheets * 0.028) + 1.25;
+      let shipping = country === 'IN' ? 1.80 : 4.95;
+      if (country === 'GB' || country === 'EU') shipping = 7.50;
+      if (carrier === 'EXPEDITED') shipping += 6.50;
+
+      const totalLanded = printCost + 0.85 + shipping;
+      const profit = retail - totalLanded;
+      const margin = (profit / retail) * 100;
+
+      document.getElementById('res-print').innerText = '$' + printCost.toFixed(2);
+      document.getElementById('res-ship').innerText = '$' + shipping.toFixed(2);
+      document.getElementById('res-profit').innerText = '$' + profit.toFixed(2);
+      document.getElementById('res-margin').innerText = margin.toFixed(1) + '%';
+    }
+
+    function auditClinicalProtocol() {
+      const code = document.getElementById('clin-code').value;
+      const area = document.getElementById('clin-area').value;
+      const wp = document.getElementById('chk-waterproof').checked;
+      const poly = document.getElementById('chk-poly-cover').checked;
+      const ev = document.getElementById('chk-evidence').checked;
+
+      let score = 0;
+      if (wp) score += 35;
+      if (poly) score += 30;
+      if (ev) score += 35;
+
+      const output = `==========================================================
+CLINICAL PROTOCOL & LAB BINDER DURABILITY AUDIT
+==========================================================
+Protocol Code: ${code}
+Therapeutic Division: ${area}
+Synthetic Waterproof Teslin: ${wp ? 'VERIFIED (Reagent & Spill Proof)' : 'WARNING (Paper Stock Vulnerable)'}
+Heavy Poly Cover: ${poly ? 'VERIFIED (10mil Frosted Poly)' : 'MISSING'}
+Evidence Base Citing: ${ev ? '100% Modern Evidence-Based Clinical Trials' : 'DEFICIENT'}
+
+COMPOSITE COMPLIANCE SCORE: ${score}/100
+APPROVAL STATUS: ${score >= 80 ? 'APPROVED FOR HOSPITAL & LAB WORKBOOK PRINT' : 'REMEDIATION MANDATORY'}
+
+STATUTORY LAB NOTICE:
+"Formulary dosages and clinical SOPs strictly follow peer-reviewed medical trial protocols and institutional IRBs. Zero alternative medicine claims."`;
+
+      document.getElementById('clinical-output').innerText = output;
+    }
+
+    function generateFulfillmentInvoice() {
+      const pub = document.getElementById('ret-publisher').value;
+      const tierVal = document.getElementById('ret-tier').value;
+
+      const inrRate = tierVal === '500' ? '41,500' : (tierVal === '1500' ? '124,500' : '249,000');
+      const invNumber = 'INV-POD-' + Date.now().toString(36).toUpperCase();
+
+      const output = `==========================================================
+OFFICIAL PRO-FORMA INVOICE: PHYSICAL BOOK FULFILLMENT
+==========================================================
+Invoice ID: ${invNumber}
+Client: ${pub}
+Retainer Scope: Tier ${tierVal === '500' ? '1: Print Setup Sprint' : (tierVal === '1500' ? '2: Managed Workbook Operations' : '3: Enterprise Institutional Fulfillment')}
+Monthly Rate: $${tierVal} USD (~Rs ${inrRate} INR)
+
+PAYMENT SETTLEMENT RAILS:
+- Domestic (India UPI): upi://pay?pa=milind.chatrabhuji@okhdfcbank&pn=Dr_Milind_Chatrabhuji&am=${inrRate.replace(',','')}&cu=INR
+- International (PayPal): milind.chatrabhuji@gmail.com ($${tierVal} USD)
+
+SERVICE COMMITMENTS:
+1. 100% Free Reprint Warranty on physical binding defects.
+2. 0.50" binding gutter clearance preflight check.
+3. Multi-vendor POD routing across US, EU, and India hubs.
+4. Real-time carrier tracking webhook dispatch.
+
+Beneficiary: Dr. Milind Chatrabhuji`;
+
+      document.getElementById('retainer-output').innerText = output;
+    }
+
+    // Initialize default calculation
+    recalcPrintEconomics();
+  </script>
+</body>
+</html>

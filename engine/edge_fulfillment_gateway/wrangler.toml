@@ -1,0 +1,12 @@
+name = "spiral-bound-fulfillment-gateway"
+main = "worker.ts"
+compatibility_date = "2024-04-01"
+
+[vars]
+ENVIRONMENT = "production"
+POD_ROUTING_MODE = "OPTIMAL_LANDED_COST"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nexus_fulfillment_production_db"
+database_id = "d1-fulfillment-cluster-live-way87"

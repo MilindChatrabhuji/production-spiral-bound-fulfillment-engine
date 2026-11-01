@@ -1,0 +1,26 @@
+COMMERCIAL SOFTWARE LICENSE AGREEMENT
+Package: @nexus/spiral-bound-fulfillment-engine
+Copyright (c) 2026 Dr. Milind Chatrabhuji. All Rights Reserved.
+
+NOTICE: This commercial software package and its accompanying print imposition engines,
+TypeScript modules, documentation, and schemas are licensed, not sold. By acquiring,
+downloading, or executing this product, you agree to be bound by the terms of this Agreement.
+
+1. PERMITTED COMMERCIAL USE
+Subject to payment of the applicable commercial license fee ($9.00 USD for Single Module Pack
+or $19.00 USD for Master Production Suite), the licensee is granted a non-exclusive, perpetual,
+worldwide right to deploy and execute this software on internal or client publishing workflows.
+
+2. RESTRICTIONS
+- You may not sublicense, resell, redistribute, or package the source code or documentation
+  for public mirroring or competing catalog sales.
+- Reverse engineering or unauthorized distribution of unbundled assets is strictly prohibited.
+
+3. DISCLAIMER OF WARRANTIES
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OF THIS SOFTWARE OR THIRD-PARTY POD VENDOR OUTAGES.
+
+4. GOVERNING LAW & JURISDICTION
+This Agreement is governed by the laws of India. Any legal dispute shall be subject to
+the exclusive jurisdiction of competent courts in Maharashtra, India.
